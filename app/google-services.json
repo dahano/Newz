@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "957978644983",
+    "firebase_url": "https://newz-a6fd5.firebaseio.com",
+    "project_id": "newz-a6fd5",
+    "storage_bucket": "newz-a6fd5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957978644983:android:a244e10e3bd1fb8d",
+        "android_client_info": {
+          "package_name": "com.newz.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "957978644983-oc229fs48c3lhm0en583mo2ic61327s9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOvFE6yQvhONt1R2rK6utYDbWHKP06xYA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957978644983:android:0ade4b0e0103d191",
+        "android_client_info": {
+          "package_name": "ofirdahan.com.newz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "957978644983-oc229fs48c3lhm0en583mo2ic61327s9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOvFE6yQvhONt1R2rK6utYDbWHKP06xYA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
