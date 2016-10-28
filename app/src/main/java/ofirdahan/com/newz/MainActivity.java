@@ -10,8 +10,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -22,14 +24,17 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
-    private Hits mHits;
+    private Story mStory[];
 
-
+    @BindView(R.id.authorLabel) TextView mAuthor;
+    @BindView(R.id.pointsValue) TextView mTextView;
+    @BindView(R.id.pointsValue) TextView mPointsValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         getTopStories();
     }
 
@@ -52,10 +57,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 try {
-                    String jsonData = response.body().string();
                     if(response.isSuccessful()){
-                        mHits = parseHitsDetails(jsonData);
-                        Log.v(TAG, response.body().string());
+                        String jsonData = response.body().string();
+                        try {
+                            mStory = parseStoryDetails(jsonData);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        Log.v(TAG, "JSON Data: "+jsonData);
                     }
                 } catch (IOException e) {
                     Log.e(TAG, "Exception caught: ",e);
@@ -65,9 +74,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private Hits parseHitsDetails(String jsonData) {
-        Hits parsedHits = new Hits();
-        return parsedHits;
+    private Story[] parseStoryDetails(String jsonData)throws JSONException {
+        JSONObject hitsBody = new JSONObject(jsonData);
+        JSONArray hits = hitsBody.getJSONArray("hits");
+
+        Story[] topStories = new Story[hits.length()];
+
+        for(int i=0; i< topStories.length; i++){
+            JSONObject jsonHits = hits.getJSONObject(i);
+            Story story = new Story();
+            story.setAuthor(jsonHits.getString("author"));
+            story.setCreatedAt(jsonHits.getString("created_at"));
+            story.setPoints(jsonHits.getInt("points"));
+            story.setTitle(jsonHits.getString("title"));
+            topStories[i] = story;
+        }
+
+        return topStories;
     }
 
 

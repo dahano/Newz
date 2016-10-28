@@ -4,41 +4,41 @@ package ofirdahan.com.newz;
  * Created by ofirdahan on 10/26/16.
  */
 
-public class Hits {
+public class Story {
     private String mCreatedAt;
     private String mTitle;
     private String mAuthor;
-    private Double mPoints;
+    private int mPoints;
 
-    private String getCreatedAt() {
+    public String getCreatedAt() {
         return mCreatedAt;
     }
 
-    private void setCreatedAt(String mCreatedAt) {
+    public void setCreatedAt(String mCreatedAt) {
         this.mCreatedAt = mCreatedAt;
     }
 
-    private String getTitle() {
+    public String getTitle() {
         return mTitle;
     }
 
-    private void setTitle(String mTitle) {
+    public void setTitle(String mTitle) {
         this.mTitle = mTitle;
     }
 
-    private String getAuthor() {
+    public String getAuthor() {
         return mAuthor;
     }
 
-    private void setAuthor(String mAuthor) {
+    public void setAuthor(String mAuthor) {
         this.mAuthor = mAuthor;
     }
 
-    private Double getPoints() {
+    public int getPoints() {
         return mPoints;
     }
 
-    private void setPoints(Double mPoints) {
+    public void setPoints(int mPoints) {
         this.mPoints = mPoints;
     }
 }
