@@ -1,8 +1,10 @@
 package ofirdahan.com.newz;
 
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -25,16 +27,15 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = MainActivity.class.getSimpleName();
 
     private Story mStory[];
+    StoryAdapter mAdapter;
 
-    @BindView(R.id.authorLabel) TextView mAuthor;
-    @BindView(R.id.pointsValue) TextView mTextView;
-    @BindView(R.id.pointsValue) TextView mPointsValue;
+    private ListView mainList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        mainList = (ListView) findViewById(R.id.myList);
         getTopStories();
     }
 
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         Call call = client.newCall(request);
         call.enqueue(new Callback() {
+            Handler mainHandler = new Handler(MainActivity.this.getMainLooper());
 
             @Override
             public void onFailure(Call call, IOException e) {
@@ -61,6 +63,14 @@ public class MainActivity extends AppCompatActivity {
                         String jsonData = response.body().string();
                         try {
                             mStory = parseStoryDetails(jsonData);
+                            mAdapter = new StoryAdapter(mStory,MainActivity.this);
+
+                            mainHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mainList.setAdapter(mAdapter);
+                                }
+                            });
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -89,9 +99,7 @@ public class MainActivity extends AppCompatActivity {
             story.setTitle(jsonHits.getString("title"));
             topStories[i] = story;
         }
-
         return topStories;
     }
-
 
 }

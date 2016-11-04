@@ -34,8 +34,8 @@ public class Story {
         this.mAuthor = mAuthor;
     }
 
-    public int getPoints() {
-        return mPoints;
+    public String getPoints() {
+        return String.valueOf(mPoints);
     }
 
     public void setPoints(int mPoints) {
