@@ -16,8 +16,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/myList"
-        android:divider="@null"
-        android:dividerHeight="0dp"
+        android:divider="@color/colorPrimaryDark"
+        android:headerDividersEnabled="true"
+        android:footerDividersEnabled="true"
+        android:dividerHeight="1dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">

@@ -40,10 +40,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:textSize="15sp"
+        android:textSize="25sp"
         android:textColor="#ffffffff"
         android:lineSpacingExtra="5dp"
         android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp" />
 </RelativeLayout>
